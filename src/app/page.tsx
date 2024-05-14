@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <FlashcardForm flashcard={currentFlashCard} changeGuessHandler={setGuess} guess={guess} nextCardHandler={pickNewCard}  />
+        <FlashcardForm flashcard={currentFlashCard} setFlashCard={setFlashCard} changeGuessHandler={setGuess} guess={guess} nextCardHandler={pickNewCard}  />
     </main>
   );
 }

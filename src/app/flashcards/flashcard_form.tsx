@@ -2,6 +2,7 @@ import {Flashcard} from './flashcard';
 
 interface FlashcardFormProps {
     flashcard: Flashcard
+    setFlashCard: any
     guess: string
     changeGuessHandler: any
     nextCardHandler: any
@@ -9,10 +10,15 @@ interface FlashcardFormProps {
 
 function FlashcardForm(props: FlashcardFormProps) {
 
-    const {flashcard, guess, changeGuessHandler, nextCardHandler} = props;
+    const {flashcard, setFlashCard,  guess, changeGuessHandler, nextCardHandler} = props;
 
     return (
-        <div className="w-96 border-2 rounded-lg border-rose-500 justify-center">
+        <div className="w-96 border-2 rounded-lg border-rose-500 justify-center px-2 mb-2">
+             {flashcard.result === false &&
+                <div className="bg-red-300  w-full block place-content-center px-2 my-2 rounded-lg border-rose-900">
+                    <p className="text-2xl text-center">WRONG</p>
+                </div>
+            }
             <div className="block">
                 <p className="text-9xl text-center">{ flashcard.text }</p>
             </div>
@@ -29,6 +35,8 @@ function FlashcardForm(props: FlashcardFormProps) {
                        nextCardHandler()
                     } else {
                         console.log("no");
+                        setFlashCard(flashcard);
+                        changeGuessHandler("");
                     }
 
                 }}>Submit</button>
